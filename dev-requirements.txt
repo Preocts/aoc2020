@@ -1,0 +1,4 @@
+pylint
+autopep9
+flake8
+black
