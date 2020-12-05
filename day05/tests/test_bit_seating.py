@@ -5,7 +5,7 @@ AOC Day day05
 """
 import unittest
 
-import day05a
+import day05
 
 
 class TestBoardingPasses(unittest.TestCase):
@@ -96,4 +96,5 @@ class TestSeatingChart(unittest.TestCase):
         self.assertTrue(hasattr(self.target, "remaining_ids"))
 
     def test_generate_seats(self):
-        pass
+        expected = (0, 1, 2, 3, 4, 5, 6, 7, )
+        self.assertEqual(self.target._generate_chart(0, 1), expected)

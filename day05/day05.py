@@ -91,9 +91,32 @@ class BoardingPass(object):
         return row_list[0] if row_codes[-1] in "0" else row_list[1]
 
 
+class SeatingChart(object):
+    """ Load a list of used seating IDs and find remaining seats """
+
+    def __init__(self) -> None:
+        self.used_ids = []
+        self._seats_per_row = 8
+
+    def _generate_chart(self, row_start: int, row_count: int) -> tuple:
+        """ Creates a seating chart
+
+        Starts at row_start and generates the number of rows requested
+        """
+        seating_chart = []
+        for row in range(row_start, row_count):
+            for col in range(0, self._seats_per_row):
+                seating_chart.append((row * self._seats_per_row) + col)
+        return tuple(seating_chart)
+
+    def load_used_ids(self):
+        pass
+
+    def remaining_ids(self):
+        pass
 
 
-def main():
+def main() -> None:
     print("Absolute Assinine Airlines Seating Systems v1")
     if len(sys.argv) != 2:
         print("Useage: python day05.py [filename]")
