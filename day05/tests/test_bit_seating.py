@@ -98,3 +98,10 @@ class TestSeatingChart(unittest.TestCase):
     def test_generate_seats(self):
         expected = (0, 1, 2, 3, 4, 5, 6, 7, )
         self.assertEqual(self.target._generate_chart(0, 1), expected)
+
+    def test_load_used_ids(self):
+        mocklist = [0, 1, 2, 3, 4, 5, 6, 7, ]
+        self.assertTrue(self.target.load_used_ids(mocklist))
+        self.assertFalse(self.target.load_used_ids("0123456789"))
+
+        self.assertEqual(self.target.used_ids, tuple(mocklist))

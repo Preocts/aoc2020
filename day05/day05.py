@@ -95,7 +95,7 @@ class SeatingChart(object):
     """ Load a list of used seating IDs and find remaining seats """
 
     def __init__(self) -> None:
-        self.used_ids = []
+        self.used_ids = ()
         self._seats_per_row = 8
 
     def _generate_chart(self, row_start: int, row_count: int) -> tuple:
