@@ -111,10 +111,12 @@ class SeatingChart(object):
         return tuple(seating_chart)
 
     def load_used_ids(self, id_list: list) -> bool:
-        self.used_ids = tuple(id_list)
+        self.used_ids = tuple(sorted(id_list))
         return True
 
-    def remaining_ids(self, starting_row: int, number_of_rows: int) -> tuple:
+    def remaining_ids(self) -> tuple:
+        starting_row = self.used_ids[0] // 8
+        number_of_rows = (self.used_ids[-1] // 8) + 1 - starting_row
         seating_list = self._generate_chart(starting_row, number_of_rows)
         remaining_list = []
         for seat in seating_list:
@@ -132,6 +134,7 @@ def main() -> None:
     with open(sys.argv[1], "r") as f:
         boarding_passes = f.read().split("\n")
     pass_check = BoardingPass()
+    seating_chart = SeatingChart()
 
     id_list = []
     for boarding_pass in boarding_passes:
@@ -141,14 +144,10 @@ def main() -> None:
         id_list.append(pass_check.get_id())
 
     id_list.sort()
+    seating_chart.load_used_ids(id_list)
     print(f"Scanned {len(boarding_passes)} boarding passes.")
     print(f"Highest id: {id_list[-1]}")
-
-    lowest = id_list[0]
-    for index, seat_id in enumerate(id_list):
-        if seat_id != (index + lowest):
-            print(f"Your seat ID is: {seat_id}")
-            exit()
+    print(f"Remaining seats: {seating_chart.remaining_ids()}")
 
 
 if __name__ == "__main__":

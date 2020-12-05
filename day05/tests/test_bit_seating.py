@@ -108,4 +108,4 @@ class TestSeatingChart(unittest.TestCase):
     def test_remaining_ids(self):
         mocklist = [0, 1, 2, 3, 4, 5, 6, ]
         self.target.load_used_ids(mocklist)
-        self.assertEqual(self.target.remaining_ids(0, 1), (7, ))
+        self.assertEqual(self.target.remaining_ids(), (7, ))
