@@ -1,4 +1,5 @@
 pylint
 autopep9
 flake8
+pytest
 black
