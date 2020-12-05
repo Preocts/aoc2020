@@ -12,7 +12,7 @@ class TestBoardingPasses(unittest.TestCase):
     """ Boarding Pass is a seating location in Binary Code """
 
     def setUp(self):
-        self.target = day05a.BoardingPass()
+        self.target = day05.BoardingPass()
 
     def test_attributes(self):
         """ Class API health """
@@ -81,3 +81,19 @@ class TestBoardingPasses(unittest.TestCase):
         self.assertTrue(self.target.pass_validate("FBFBFBFLRL"))
         self.assertFalse(self.target.pass_validate("FBFBFBFBRL"))
         self.assertFalse(self.target.pass_validate("FBFBFbFLRL"))
+
+
+class TestSeatingChart(unittest.TestCase):
+    """ Make sure your plane is not over-filled today!"""
+
+    def setUp(self):
+        self.target = day05.SeatingChart()
+
+    def test_attributes(self):
+        """ Health check of class """
+        self.assertTrue(hasattr(self.target, "_generate_chart"))
+        self.assertTrue(hasattr(self.target, "load_used_ids"))
+        self.assertTrue(hasattr(self.target, "remaining_ids"))
+
+    def test_generate_seats(self):
+        pass

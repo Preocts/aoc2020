@@ -91,10 +91,12 @@ class BoardingPass(object):
         return row_list[0] if row_codes[-1] in "0" else row_list[1]
 
 
+
+
 def main():
     print("Absolute Assinine Airlines Seating Systems v1")
     if len(sys.argv) != 2:
-        print("Useage: python day05a.py [filename]")
+        print("Useage: python day05.py [filename]")
         exit()
     print("Processing scanned boarding passes...")
     with open(sys.argv[1], "r") as f:
