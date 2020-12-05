@@ -96,6 +96,7 @@ class SeatingChart(object):
 
     def __init__(self) -> None:
         self.used_ids = ()
+        self._rows_per_plane = 128
         self._seats_per_row = 8
 
     def _generate_chart(self, row_start: int, row_count: int) -> tuple:
@@ -109,11 +110,17 @@ class SeatingChart(object):
                 seating_chart.append((row * self._seats_per_row) + col)
         return tuple(seating_chart)
 
-    def load_used_ids(self):
-        pass
+    def load_used_ids(self, id_list: list) -> bool:
+        self.used_ids = tuple(id_list)
+        return True
 
-    def remaining_ids(self):
-        pass
+    def remaining_ids(self, starting_row: int, number_of_rows: int) -> tuple:
+        seating_list = self._generate_chart(starting_row, number_of_rows)
+        remaining_list = []
+        for seat in seating_list:
+            if seat not in self.used_ids:
+                remaining_list.append(seat)
+        return tuple(remaining_list)
 
 
 def main() -> None:
