@@ -3,7 +3,7 @@ Preocts <preocts@preocts.com>
 Preocts#8196
 AOC Day day10
 """
-from collections import defaultdict
+# from collections import defaultdict
 import sys
 
 
@@ -52,7 +52,7 @@ def locked_count(adaptors: tuple) -> list:
 
     size = 0
     total = 1
-    for lock in locked[1:len(locked) - 1]:
+    for lock in locked[1 : len(locked) - 1]:
         if lock:
             size = size + 1
         if not lock:
